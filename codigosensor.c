@@ -76,3 +76,43 @@ void loop() {
   bool btn60s = digitalRead(BTN_60S) == LOW;
   bool btn300s = digitalRead(BTN_300S) == LOW;
   bool btnDesligar = digitalRead(BTN_DESLIGAR) == LOW; 
+
+//  Debug no Serial Monitor
+  // Existencia otima pra ver se ta tudo funcionando internamente 
+  Serial.print("BTN_LIGAR=");
+  Serial.print(btnLigar ? "1" : "0");
+  Serial.print(" | BTN_TEMP=");
+  Serial.print(btnTemp ? "1" : "0");
+  Serial.print(" | BTN_DESL=");
+  Serial.print(btnDesligar ? "1" : "0");
+  Serial.print(" | PIR=");
+  Serial.println(motionDetected ? "1" : "0");
+
+  // Botões de tempo 
+  if (btn30s) {
+    defaultTime = 30;
+    if (timerMode) {
+      remainingTime = 30;
+    }
+    lcd.setCursor(0, 1);
+    lcd.print("Tempo: 30s      ");
+    delay(300);
+  }
+  if (btn60s) {
+    defaultTime = 60;
+    if (timerMode) {
+      remainingTime = 60;
+    }
+    lcd.setCursor(0, 1);
+    lcd.print("Tempo: 60s      ");
+    delay(300);
+  }
+  if (btn300s) {
+    defaultTime = 300;
+    if (timerMode) {
+      remainingTime = 300;
+    }
+    lcd.setCursor(0, 1);
+    lcd.print("Tempo: 300s     ");
+    delay(300);
+  }
