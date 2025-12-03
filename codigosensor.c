@@ -54,3 +54,25 @@ void setup() {
 
   Serial.begin(9600);
 }
+
+
+
+void loop() {
+  // Leitura do PIR 
+  
+  int currentPIRState = digitalRead(PIR);
+  if (millis() - lastPIRChange >= DEBOUNCE_DELAY) {
+    if (currentPIRState != lastPIRState) {
+      lastPIRState = currentPIRState;
+      lastPIRChange = millis();
+    }
+  }
+  motionDetected = (lastPIRState == HIGH);
+
+  //  Leitura dos botões 
+  bool btnLigar = digitalRead(BTN_LIGAR) == LOW;
+  bool btnTemp = digitalRead(BTN_TEMPORIZADOR) == LOW;
+  bool btn30s = digitalRead(BTN_30S) == LOW;
+  bool btn60s = digitalRead(BTN_60S) == LOW;
+  bool btn300s = digitalRead(BTN_300S) == LOW;
+  bool btnDesligar = digitalRead(BTN_DESLIGAR) == LOW; 
