@@ -5,15 +5,20 @@ Um projeto Arduino que implementa um sistema inteligente de controle de ilumina�
 ## 📋 Estrutura do Repositório
 
 SensorMovimentoArduino/
+
 ├── CodigoFinal/
+
 │ └── codigosensor.c # Código principal do sistema
+
 ├── CodigoTeste/
+
 │ └── testelampada.c # Código de teste da lâmpada
+
 ├── Apresentação/ # Documentação e apresentações
+
 ├── Documentação/ # Documentação do projeto
+
 └── README.md # Este arquivo
-
-
 
 
 ## 🎯 Descrição do Projeto
@@ -91,29 +96,6 @@ SensorMovimentoArduino/
 ### Software
 - Arduino IDE
 - Biblioteca: `LiquidCrystal`
-
-## 📍 Pinagem
-
-| Componente | Pino Arduino |
-|-----------|-------------|
-| Relé | 8 |
-| Sensor PIR | 7 |
-| LED Backlight | 13 |
-| Botão Desligar | A0 |
-| Botão Temporizador | A1 |
-| Botão Ligar | A2 |
-| Botão 30s | A3 |
-| Botão 60s | A4 |
-| Botão 300s | A5 |
-| LCD RS | 12 |
-| LCD E | 11 |
-| LCD D4 | 10 |
-| LCD D5 | 5 |
-| LCD D6 | 4 |
-| LCD D7 | 3 |
-| LCD VSS | 2 |
-
-## 🎮 Botões de Controle
 
 ### Painel de Controle (6 Botões)
 
