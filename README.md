@@ -69,18 +69,31 @@ O projeto implementa um sistema de controle de iluminação automatizado para Ar
 ## 📁 Descrição dos Arquivos
 
 SensorMovimentoArduino/
+
 │
+
 ├── CodigoFinal/
+
 │ └── codigosensor.c # Código principal do sistema
+
 │
+
 ├── CodigoTeste/
+
 │ └── testelampada.c # Código de teste da lâmpada
+
 │
+
 ├── Apresentação/ # Arquivos de apresentação do projeto
+
 │
+
 ├── Documentação/ # Documentação técnica (em desenvolvimento)
+
 │
+
 └── README.md # Este arquivo
+
 
 
 ## 🔧 Componentes Utilizados
