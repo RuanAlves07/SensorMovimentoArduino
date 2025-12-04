@@ -55,8 +55,6 @@ void setup() {
   Serial.begin(9600);
 }
 
-
-
 void loop() {
   // Leitura do PIR 
   
@@ -77,7 +75,7 @@ void loop() {
   bool btn300s = digitalRead(BTN_300S) == LOW;
   bool btnDesligar = digitalRead(BTN_DESLIGAR) == LOW; 
 
-//  Debug no Serial Monitor
+  //  Debug no Serial Monitor
   // Existencia otima pra ver se ta tudo funcionando internamente 
   Serial.print("BTN_LIGAR=");
   Serial.print(btnLigar ? "1" : "0");
@@ -116,3 +114,61 @@ void loop() {
     lcd.print("Tempo: 300s     ");
     delay(300);
   }
+
+  //  Botões de controle 
+  if (btnLigar) {
+    timerMode = false;
+    digitalWrite(rele, HIGH);
+    lcd.setCursor(0, 0);
+    lcd.print("Luz: LIGADA    ");
+    delay(300);
+  }
+  if (btnTemp) {
+    timerMode = true;
+    remainingTime = defaultTime;
+    lcd.setCursor(0, 0);
+    lcd.print("Temporizador   ");
+    delay(300);
+  }
+  if (btnDesligar) { 
+    timerMode = false;
+    digitalWrite(rele, LOW);
+    lcd.setCursor(0, 0);
+    lcd.print("Luz: DESLIGADA ");
+    delay(300);
+  }
+
+  //  Modo Temporizador 
+  if (timerMode) {
+    if (millis() - lastUpdate >= 1000) {
+      lastUpdate = millis();
+
+      if (motionDetected) {
+        remainingTime = defaultTime;
+      } else {
+        if (remainingTime > 0) {
+          remainingTime--;
+        }
+      }
+
+      lcd.setCursor(0, 1);
+      lcd.print("                ");
+      lcd.setCursor(0, 1);
+      lcd.print("Tempo: ");
+      lcd.print(remainingTime);
+      lcd.print("s");
+
+      if (remainingTime <= 0) {
+        digitalWrite(rele, LOW);
+      } else {
+        digitalWrite(rele, HIGH);
+      }
+	// M significa "Movimento", então quando o objeto se move no sensor, aparece na tela LCD um M para indicar isso
+      lcd.setCursor(14, 0);
+      lcd.print(motionDetected ? "M" : " ");
+    }
+  }
+
+  digitalWrite(LED_BUILTIN, digitalRead(rele));
+  delay(50);
+}
