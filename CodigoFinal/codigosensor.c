@@ -39,7 +39,7 @@
   void setup() {
     pinMode(rele, OUTPUT);
     pinMode(PIR, INPUT);
-    pinMode(backLight, OUTPUT); /
+    pinMode(backLight, OUTPUT); 
     digitalWrite(backLight, HIGH);
 
     // Configuração dos botões com pull-up interno
@@ -112,21 +112,28 @@
       timerMode = false;
       digitalWrite(rele, HIGH);
       lcd.setCursor(0, 0);
-      lcd.print("Luz: LIGADA    ");
+      lcd.print("Luz: LIGADA    ");  // 16 caracteres para preencher
+      lcd.setCursor(0, 1);
+      lcd.print("                "); // Limpa a linha 1
     }
     if (btnTemp) {
       timerMode = true;
       remainingTime = defaultTime;
       lcd.setCursor(0, 0);
       lcd.print("Temporizador   ");
+      lcd.setCursor(0, 1);
+      lcd.print("Tempo: ");
+      lcd.print(remainingTime);
+      lcd.print("s             "); // completa com espaços
     }
     if (btnDesligar) {
       timerMode = false;
       digitalWrite(rele, LOW);
       lcd.setCursor(0, 0);
-      lcd.print("Luz: DESLIGADA ");
+      lcd.print("Luz: DESLIGADA ");   // 16 caracteres
+      lcd.setCursor(0, 1);
+      lcd.print("                "); // Limpa a linha 1
     }
-
     // Modo Temporizador 
     if (timerMode) {
       if (millis() - lastUpdate >= 1000) {
